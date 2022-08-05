@@ -58,14 +58,50 @@ function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
   // your code here
 }
 
+let ret = [];
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
-  // your code here
+  return helper(target, coins, []);
+  // let ret = [];
+  // let minSize = 100000;
+  // for (const coin of coins) {
+  //   const remainder = target - coin;
+  //   if (remainder === 0) {
+  //     return [coin];
+  //   } else if (remainder > 0) {
+  //     const temp = helper(remainder, coins, []);
+  //     if (temp.length < minSize) {
+  //       minSize = temp.length;
+  //       ret = temp;
+  //     }
+  //   }
+  // }
+  // return ret;
 }
 
+function helper(target, coins, arr) {
+  //bc
+  if (target < 0) {
+    return null;
+  }
+  if (target === 0) {
+    return arr;
+  }
 
+  let ret = [];
+  let minSize = 100000;
+
+  for (const coin of coins) {
+    const temp = helper(target - coin, coins, [...arr, coin]);
+    if (temp != null && temp.length < minSize) {
+      minSize = temp.length;
+      ret = temp;
+    }
+  }
+  return ret;
+}
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
-  module.exports = makeBetterChange
+  module.exports = makeBetterChange;
 } catch (e) {
   module.exports = null;
 }
