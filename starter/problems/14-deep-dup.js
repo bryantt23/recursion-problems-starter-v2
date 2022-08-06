@@ -38,6 +38,23 @@ console.log(x[0] === y[0]) // true
 
 // your code here
 
+function deepDup(arr) {
+  function duplicate(arr1) {
+    let res = [];
+    for (const a of arr1) {
+      if (Array.isArray(a)) {
+        res.push(duplicate(a));
+      } else {
+        res.push(a);
+      }
+    }
+    return res;
+  }
+  //cheating way
+  // return JSON.parse(JSON.stringify(arr));
+  return duplicate(arr);
+}
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = deepDup;

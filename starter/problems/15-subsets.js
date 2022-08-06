@@ -15,6 +15,21 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
 ***********************************************************************/
 
 // your code here
+function subsets(arr) {
+  let res = [];
+  const n = arr.length;
+  build(arr, res, 0, n, []);
+  return res;
+}
+
+function build(arr, res, start, n, cur) {
+  res.push(cur);
+  //bc
+  if (start === n) return;
+  for (let i = start; i < n; i++) {
+    build(arr, res, i + 1, n, [...cur, arr[i]]);
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
