@@ -23,6 +23,23 @@ sort([]); // []
 
 function sort(nums, sorted = []) {
   // your code here
+  //bc
+  if (nums.length === 0) {
+    return sorted;
+  }
+
+  let smallest = 1000000,
+    smallestPos = -1;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < smallest) {
+      smallest = nums[i];
+      smallestPos = i;
+    }
+  }
+
+  nums.splice(smallestPos, 1);
+
+  return sort(nums, [...sorted, smallest]);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

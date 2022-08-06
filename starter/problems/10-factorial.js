@@ -17,11 +17,16 @@ factorial(5); // 120
 ***********************************************************************/
 
 // your code here
-  
+function factorial(num) {
+  //bc
+  if (num === 1) {
+    return 1;
+  }
+  return num * factorial(num - 1);
+}
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = factorial;
 } catch (e) {
   module.exports = null;
 }
-  
