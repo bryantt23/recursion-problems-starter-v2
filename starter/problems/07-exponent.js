@@ -20,10 +20,24 @@ exponent(2, -2); // 1/4 (or 0.25)
 exponent(5, 5); // 3125
 ***********************************************************************/
 
-function exponent(b, n) {
+function exponent(base, power) {
   // your code here
+  //bc
+  if (power < 0) {
+    return 1 / exponent(base, -power);
+  }
+  if (power === 0) {
+    return 1;
+  }
+
+  const res = exponent(base, Number(Math.floor(power / 2)));
+  if (power % 2 === 0) {
+    return res * res;
+  } else {
+    return base * res * res;
+  }
 }
-  
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = exponent;

@@ -13,6 +13,18 @@ reverse(""); // ""
 ***********************************************************************/
 
 // your code here
+function reverse(str) {
+  return helper(str, '');
+}
+
+function helper(a, b) {
+  //bc
+  if (a.length === 0) {
+    return b;
+  }
+
+  return helper(a.substring(1), a.charAt(0) + b);
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

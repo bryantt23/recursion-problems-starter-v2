@@ -13,6 +13,22 @@ addToTwelve([1]); // false
 ***********************************************************************/
 
 // your code here
+function addToTwelve(nums) {
+  return helper(nums, 1, nums.length);
+}
+
+function helper(nums, pos, length) {
+  //bc
+  if (pos === length) {
+    return false;
+  }
+
+  if (nums[pos - 1] + nums[pos] === 12) {
+    return true;
+  }
+
+  return helper(nums, pos + 1, length);
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

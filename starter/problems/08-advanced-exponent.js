@@ -39,11 +39,20 @@ be recursively calling `advancedExponent`. Find a way to visually see how many
 times `advancedExponent` is being recursively called.
 ***********************************************************************/
 
-
-function advancedExponent(b, n) {
+function advancedExponent(base, power) {
   // your code here
-}
+  //bc
+  if (power === 0) {
+    return 1;
+  }
 
+  const res = advancedExponent(base, Number(Math.floor(power / 2)));
+  if (power % 2 === 0) {
+    return res * res;
+  } else {
+    return base * res * res;
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

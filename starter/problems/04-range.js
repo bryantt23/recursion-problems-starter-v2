@@ -10,9 +10,18 @@ range(3, 4); // [3]
 range(7, 6); // []
 ***********************************************************************/
 
-
 // your code here
+function range(start, end) {
+  return helper(start, end, []);
+}
 
+function helper(start, end, res) {
+  if (start >= end) {
+    return res;
+  }
+  res.push(start);
+  return helper(start + 1, end, res);
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

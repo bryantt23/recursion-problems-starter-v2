@@ -12,9 +12,17 @@ iceCreamShop(['moose tracks'], 'moose tracks'); // true
 iceCreamShop([], 'honey lavender'); // false
 ***********************************************************************/
 
-
 // your code here
-
+function iceCreamShop(arr, target, pos = 0) {
+  //bc
+  if (pos === arr.length) {
+    return false;
+  }
+  if (arr[pos] === target) {
+    return true;
+  }
+  return iceCreamShop(arr, target, pos + 1);
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
