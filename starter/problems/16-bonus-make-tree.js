@@ -65,6 +65,28 @@ The call above should return the tree below:
 
 const makeTree = (categories, parent) => {
   // your code here
+  const res = {};
+  for (const category of categories) {
+    const { id, parent } = category;
+    if (parent) {
+      findParent(id, res, parent);
+    } else {
+      res[id] = {};
+    }
+  }
+
+  function findParent(id, obj, parent) {
+    for (const key in obj) {
+      const val = obj[key];
+      if (key === parent) {
+        obj[key] = { ...val, [id]: {} };
+      }
+      findParent(id, val, parent);
+    }
+  }
+
+  return res;
+  return res;
 };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

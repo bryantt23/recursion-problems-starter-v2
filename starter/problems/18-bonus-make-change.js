@@ -58,27 +58,12 @@ function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
   // your code here
 }
 
-let ret = [];
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
-  return helper(target, coins, []);
-  // let ret = [];
-  // let minSize = 100000;
-  // for (const coin of coins) {
-  //   const remainder = target - coin;
-  //   if (remainder === 0) {
-  //     return [coin];
-  //   } else if (remainder > 0) {
-  //     const temp = helper(remainder, coins, []);
-  //     if (temp.length < minSize) {
-  //       minSize = temp.length;
-  //       ret = temp;
-  //     }
-  //   }
-  // }
-  // return ret;
+  const res = helper(target, coins, [], 100000);
+  return res.length === 0 ? null : res.reverse();
 }
 
-function helper(target, coins, arr) {
+function helper(target, coins, arr, largestCoin) {
   //bc
   if (target < 0) {
     return null;
@@ -91,7 +76,11 @@ function helper(target, coins, arr) {
   let minSize = 100000;
 
   for (const coin of coins) {
-    const temp = helper(target - coin, coins, [...arr, coin]);
+    const nextValue = target - coin;
+    if (coin > largestCoin || nextValue < 0) {
+      continue;
+    }
+    const temp = helper(nextValue, coins, [...arr, coin], coin);
     if (temp != null && temp.length < minSize) {
       minSize = temp.length;
       ret = temp;
